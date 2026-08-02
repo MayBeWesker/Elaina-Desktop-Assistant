@@ -142,45 +142,7 @@ qwen35-2b-local:latest
 └─ 启动桌面助手.bat
 ```
 
-## 常见问题
 
-### 虚拟人显示 `Disconnected from server`
-
-等待后端完成 FunASR 初始化。若后端已退出，请查看可见命令行中的最后一条异常，并确认端口 `1017` 未被其他程序占用。
-
-### 本地模型提示 `model not found`
-
-确认 Ollama 正在运行，并确保 `ollama list` 中的模型名与 `config_alts/local_model.yaml` 完全一致。
-
-### TTS 生成失败
-
-Edge TTS 需要网络连接。确认系统可以访问微软在线语音服务，或在配置中关闭 `TTS_ON` 进行纯文本诊断。
-
-### Windows 阻止 Electron
-
-请使用 `npm install` 下载与项目声明一致的 Electron。不要从不可信来源复制可执行文件；企业设备可能需要管理员允许 Electron 运行。
-
-## 隐私与安全
-
-- 不要提交 API Key、聊天记录、缓存、模型权重或个人截图。
-- `.gitignore` 已排除常见敏感文件和大型运行产物。
-- 屏幕读取采用按需策略；请在配置第三方视觉 API 前了解其数据政策。
-- 发布仓库前仍建议执行一次密钥扫描。
-
-## 发布到 GitHub
-
-确认人物素材拥有公开分发许可，并在本地完成启动测试后执行：
-
-```powershell
-git init
-git add .
-git commit -m "Initial public release"
-git branch -M main
-git remote add origin <your-repository-url>
-git push -u origin main
-```
-
-提交前可使用 `git status --ignored` 确认模型、缓存、虚拟环境和密钥文件没有进入暂存区。
 
 ## License
 
