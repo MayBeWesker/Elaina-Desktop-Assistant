@@ -1,0 +1,23 @@
+# Optional local Ollama chat/vision configuration.
+# The model itself is deliberately not included in this repository.
+LLM_PROVIDER: "ollama"
+PERSONA_CHOICE: "local_elaina"
+
+ollama:
+  BASE_URL: "http://localhost:11434/v1"
+  LLM_API_KEY: "ollama"
+  ORGANIZATION_ID: ""
+  PROJECT_ID: ""
+  MODEL: "qwen35-2b-local:latest"
+  MAX_TOKENS: 800
+  REASONING_EFFORT: "none"
+
+  V_BASE_URL: "http://localhost:11434/v1"
+  VLLM_API_KEY: "ollama"
+  V_ORGANIZATION_ID: ""
+  V_PROJECT_ID: ""
+  V_MODEL: "qwen35-2b-local:latest"
+  V_REASONING_EFFORT: "none"
+  VERBOSE: false
+  CLIPBOARD_HISTORY: false
+  MAX_HISTORY_CNT: 3

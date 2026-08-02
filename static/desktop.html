@@ -1,0 +1,132 @@
+﻿<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Elaina Desktop Pet</title>
+    <!-- 引入依赖库 -->
+    <script src="libs/live2dcubismcore.min.js"></script>
+    <script src="libs/live2d.min.js"></script>
+    <script src="libs/pixi.min.js"></script>
+    <script src="libs/index.min.js"></script>
+    <script src="libs/ort.js"></script>
+    <script src="libs/bundle.min.js"></script>
+    <script src="desktop/task_queue.js"></script>
+    <script src="libs/porcupine-web.js"></script>
+    <script src="libs/web-voice-processor.js"></script>
+    <script src="desktop/porcupine_params.js"></script>
+    <!-- Elaina_en_wasm_v3_0_0.js not found in repo; English wake-word disabled -->
+
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="desktop/style.css">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: transparent;
+        }
+        #canvas {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        #message {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 14px;
+            z-index: 1000;
+        }
+        #message.hidden {
+            display: none;
+        }
+        #loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <div id="loading">Loading Elaina...</div>
+    <div id="message" class="hidden"></div>
+
+    <!-- 引入脚本 -->
+    <script src="desktop/live2d.js"></script>
+    <script src="desktop/vad.js"></script>
+    <script src="desktop/audio.js"></script>
+    <script src="desktop/websocket.js"></script>
+    <script src="desktop/electron.js"></script>
+
+    <script>
+        // 页面加载完成后初始化 Live2D 模型
+        window.addEventListener('DOMContentLoaded', async () => {
+            console.log('Desktop Assistant: Initializing...');
+
+            // 初始化 Live2D 模块
+            if (window.live2dModule) {
+                await window.live2dModule.init();
+
+                // 立即显示照片人物；连接后端后仍可通过 set-model 切换配置
+                const defaultModel = {
+                    name: "Mili",
+                    type: "sprite",
+                    url: "character/mili_daily_front_full_neutral.png",
+                    heightRatio: 0.92,
+                    initialXshift: 0,
+                    initialYshift: 0,
+                    expressionFiles: {
+                        0: "character/mili_daily_front_full_neutral.png",
+                        1: "character/mili_daily_front_full_neutral.png",
+                        2: "character/mili_daily_front_full_calm.png",
+                        3: "character/mili_daily_front_full_calm.png",
+                        4: "character/mili_daily_front_full_calm.png",
+                        5: "character/mili_daily_front_full_neutral.png",
+                        6: "character/mili_daily_front_full_calm.png"
+                    },
+                    emotionMap: {
+                        "neutral": 0,
+                        "joy": 1,
+                        "excitement": 1,
+                        "surprise": 2,
+                        "sad": 3,
+                        "worry": 3,
+                        "anger": 4,
+                        "disgust": 4,
+                        "shy": 5,
+                        "confusion": 6,
+                        "expectation": 6
+                    }
+                };
+
+                const initialModel = window.pendingModelInfo || defaultModel;
+                console.log(`Desktop Assistant: Loading ${initialModel.name} model...`);
+                await window.live2dModule.loadModel(initialModel);
+
+                // 隐藏加载提示
+                document.getElementById('loading').style.display = 'none';
+
+                console.log(`Desktop Assistant: ${initialModel.name} loaded successfully!`);
+                window.modelInfo = initialModel;
+                window.pendingModelInfo = null;
+            } else {
+                console.error('Desktop Assistant: live2dModule not found!');
+                document.getElementById('loading').textContent = 'Error: Live2D module not loaded';
+            }
+        });
+    </script>
+</body>
+</html>

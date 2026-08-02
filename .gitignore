@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.conda/
+
+# Node / Electron
+node_modules/
+dist/
+release/
+
+# Runtime data
+cache/
+tmp/
+mem.json
+chat_history/
+*.log
+
+# Downloaded models and weights
+models/
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.onnx
+!static/libs/silero_vad.onnx
+
+# Local secrets and overrides
+.env
+conf.local.yaml
+api_keys.py
+
+# Editors / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

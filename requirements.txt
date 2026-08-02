@@ -1,0 +1,22 @@
+PyYAML
+chardet
+loguru
+numpy
+scipy
+sounddevice
+soundfile
+Pillow
+PyAutoGUI
+pywin32; platform_system == "Windows"
+openai
+zhipuai
+fastapi
+uvicorn[standard]
+httpx
+edge-tts
+playsound3
+funasr
+modelscope
+torch
+torchaudio
+onnxruntime

@@ -1,0 +1,30 @@
+{
+  "name": "elaina-desktop-assistant",
+  "version": "1.0.0",
+  "description": "Voice-enabled desktop character with cloud and local LLM support",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^33.4.11",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "io.github.elaina.desktop-assistant",
+    "productName": "Elaina Desktop Assistant",
+    "win": {
+      "target": ["nsis", "portable"],
+      "icon": "static/pictures/icon.ico",
+      "sign": false
+    },
+    "files": [
+      "main.js",
+      "package.json",
+      "static/**/*"
+    ],
+    "asarUnpack": ["**/static/**"]
+  }
+}

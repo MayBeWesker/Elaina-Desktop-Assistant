@@ -1,0 +1,33 @@
+[
+  {
+    "name": "Mili",
+    "description": "Desktop photo character",
+    "type": "sprite",
+    "url": "character/mili_daily_front_full_neutral.png",
+    "heightRatio": 0.92,
+    "initialXshift": 0,
+    "initialYshift": 0,
+    "expressionFiles": {
+      "0": "character/mili_daily_front_full_neutral.png",
+      "1": "character/mili_daily_front_full_neutral.png",
+      "2": "character/mili_daily_front_full_calm.png",
+      "3": "character/mili_daily_front_full_calm.png",
+      "4": "character/mili_daily_front_full_calm.png",
+      "5": "character/mili_daily_front_full_neutral.png",
+      "6": "character/mili_daily_front_full_calm.png"
+    },
+    "emotionMap": {
+      "neutral": 0,
+      "joy": 1,
+      "excitement": 1,
+      "surprise": 2,
+      "sad": 3,
+      "worry": 3,
+      "anger": 4,
+      "disgust": 4,
+      "shy": 5,
+      "confusion": 6,
+      "expectation": 6
+    }
+  }
+]

@@ -1,0 +1,70 @@
+CONF_VERSION: "1.0.0"
+
+PROTOCAL: "http://"
+HOST: "0.0.0.0"
+PORT: 1017
+
+SERVER:
+  PRELOAD_MODELS: true
+
+REMOVE_SPECIAL_CHAR: true
+CLAUDE_API_KEY: ""
+
+# OpenAI-compatible cloud chat endpoint.
+# Set DEEPSEEK_API_KEY in the environment; never commit a real key.
+LLM_PROVIDER: "ollama"
+ollama:
+  BASE_URL: "https://api.deepseek.com/v1"
+  LLM_API_KEY: "${DEEPSEEK_API_KEY}"
+  ORGANIZATION_ID: ""
+  PROJECT_ID: ""
+  MODEL: "deepseek-v4-flash"
+  MAX_TOKENS: 4096
+  REASONING_EFFORT: "none"
+
+  # Optional local visual model. Install it in Ollama separately.
+  V_BASE_URL: "http://localhost:11434/v1"
+  VLLM_API_KEY: "ollama"
+  V_ORGANIZATION_ID: ""
+  V_PROJECT_ID: ""
+  V_MODEL: "qwen35-2b-local:latest"
+  V_REASONING_EFFORT: "none"
+  VERBOSE: false
+  CLIPBOARD_HISTORY: false
+  MAX_HISTORY_CNT: 6
+
+LIVE2D: false
+LIVE2D_MODEL: "Mili"
+
+VOICE_INPUT_ON: true
+MIC_IN_BROWSER: false
+ASR_MODEL: "FunASR"
+FunASR:
+  model_name: "iic/SenseVoiceSmall"
+  vad_model: "iic/speech_fsmn_vad_zh-cn-16k-common-pytorch"
+  punc_model: "iic/punc_ct-transformer_cn-en-common-vocab471067-large"
+  device: "cpu"
+  disable_update: true
+  ncpu: 4
+  hub: "ms"
+  use_itn: false
+  language: "auto"
+
+TTS_ON: true
+TTS_MODEL: "edgeTTS"
+SAY_SENTENCE_SEPARATELY: true
+edgeTTS:
+  voice: "zh-CN-XiaoxiaoNeural"
+
+TRANSLATE_AUDIO: false
+TRANSLATE_PROVIDER: "DeepLX"
+DeepLX:
+  DEEPLX_TARGET_LANG: "JA"
+  DEEPLX_API_ENDPOINT: "http://localhost:1188/v2/translate"
+
+VERBOSE: false
+EXIT_PHRASE: "exit."
+PERSONA_CHOICE: "elaina2"
+DEFAULT_PERSONA_PROMPT_IN_YAML: ""
+LIVE2D_Expression_Prompt: "live2d_expression_prompt"
+CONFIG_ALTS_DIR: "config_alts"
